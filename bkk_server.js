@@ -42,6 +42,11 @@ const STATUSES = [
 ];
 const STATUS_BY_ID = Object.fromEntries(STATUSES.map((s) => [s.id, s]));
 
+// Incident-level status lifecycle (independent of per-vehicle
+// acknowledge/onsite/complete tracking, which is separate and unchanged).
+const REJECT_REASONS = ["Asset N/A", "Team N/A", "Wrong Unit", "Other"];
+const CANCEL_REASONS = ["Created in error", "Duplicate", "No longer required", "Not an SES task", "Other"];
+
 const SUBURBS = [
   "Bankstown", "Chullora", "Greenacre", "Mount Lewis", "Punchbowl",
   "Bass Hill", "Birrong", "Chester Hill", "Condell Park", "Georges Hall",
@@ -87,6 +92,7 @@ function initialState() {
     allIncidents: [],
     unassignedIncidents: [],
     incidentNotes: {},
+    incidentTimelines: {},
     incidentCounter: 1,
     ssMembers: [],
     externalPeople: [],
@@ -161,8 +167,9 @@ function pickNearestEligibleVehicle() {
 }
 
 // Suburb assignment first (if that vehicle isn't Stood Down), then Auto
-// Request to Nearest Asset, then null (pool). Matches the priority
-// agreed for the prototype.
+// Request to Nearest Asset, then null (pool). No longer used by
+// CREATE_INCIDENT (tasking is now always a deliberate, separate action --
+// see the status lifecycle below) but kept in case it's useful again later.
 function resolveAutoVehicle(addr) {
   const suburb = findSuburbForAddress(addr);
   if (suburb && state.suburbAssignments[suburb]) {
@@ -178,14 +185,46 @@ function resolveAutoVehicle(addr) {
   return null;
 }
 
+// Updates an incident's fields wherever a copy of it might be sitting --
+// allIncidents, unassignedIncidents, and any vehicle's queue/incomingQueue
+// -- so the status shown is always consistent no matter where it's viewed
+// from.
+function updateIncidentEverywhere(incidentId, updater) {
+  state.allIncidents = state.allIncidents.map((i) => (i.id === incidentId ? updater(i) : i));
+  state.unassignedIncidents = state.unassignedIncidents.map((i) => (i.id === incidentId ? updater(i) : i));
+  VEHICLES.forEach((v) => {
+    const vs = state.vehicleStates[v];
+    if (!vs) return;
+    vs.queue = vs.queue.map((i) => (i.id === incidentId ? updater(i) : i));
+    vs.incomingQueue = vs.incomingQueue.map((i) => (i.id === incidentId ? updater(i) : i));
+  });
+}
+
+function addIncidentTimelineEntry(incidentId, status, note, timestamp) {
+  if (!state.incidentTimelines[incidentId]) state.incidentTimelines[incidentId] = [];
+  state.incidentTimelines[incidentId].unshift({
+    id: `${Date.now()}-${Math.random()}`,
+    status,
+    note: note || null,
+    time: timestamp ? new Date(timestamp).toISOString() : new Date().toISOString(),
+  });
+}
+
+function setIncidentStatus(incidentId, status, note, timestamp) {
+  updateIncidentEverywhere(incidentId, (i) => ({ ...i, status }));
+  addIncidentTimelineEntry(incidentId, status, note, timestamp);
+}
+
 function notifyVehicle(vehicle, incident) {
   const v = state.vehicleStates[vehicle];
   if (!v) return;
   const alreadyTasked = v.incomingQueue.some((i) => i.id === incident.id) || v.queue.some((i) => i.id === incident.id);
   if (alreadyTasked) return;
-  v.incomingQueue.push({ ...incident, taskedTo: vehicle });
+  const tagged = { ...incident, taskedTo: vehicle, status: "Tasked" };
+  v.incomingQueue.push(tagged);
   state.unassignedIncidents = state.unassignedIncidents.filter((i) => i.id !== incident.id);
-  state.allIncidents = state.allIncidents.map((i) => (i.id === incident.id ? { ...i, taskedTo: vehicle } : i));
+  state.allIncidents = state.allIncidents.map((i) => (i.id === incident.id ? { ...i, taskedTo: vehicle, status: "Tasked" } : i));
+  addIncidentTimelineEntry(incident.id, "Tasked", `Tasked to ${vehicle}`);
   logEventFor(vehicle, `${vehicle} Tasked on incident ${shortId(incident.id)} (pending acknowledgement)`);
 }
 
@@ -206,18 +245,22 @@ const actions = {
       dist: (fields && fields.dist) || null,
       eta: (fields && fields.eta) || null,
       taskedAt: new Date().toISOString(),
+      status: "New",
       ...fields,
     };
     state.incidentCounter += 1;
     state.allIncidents.unshift(incident);
+    addIncidentTimelineEntry(incident.id, "New", "Incident created", incident.taskedAt);
 
     const chosen = Array.isArray(vehicles) ? vehicles.filter((v) => VEHICLES.includes(v)) : [];
     if (chosen.length > 0) {
       chosen.forEach((v) => notifyVehicle(v, incident));
     } else {
-      const resolved = resolveAutoVehicle(incident.addr);
-      if (resolved) notifyVehicle(resolved.vehicle, incident);
-      else addToPool(incident);
+      // No manual vehicle assignment -- always goes to the pool as "New".
+      // Auto-routing no longer happens at creation time; tasking is now
+      // always a deliberate, separate action (see NOTIFY_VEHICLE / the
+      // Task button), not something that happens silently on create.
+      addToPool(incident);
     }
     return { incident };
   },
@@ -227,6 +270,52 @@ const actions = {
     const incident = state.allIncidents.find((i) => i.id === incidentId);
     if (!incident || !VEHICLES.includes(vehicle)) throw new Error("Unknown incident or vehicle");
     notifyVehicle(vehicle, incident);
+    return {};
+  },
+
+  ACKNOWLEDGE_INCIDENT(payload) {
+    const { incidentId } = payload;
+    setIncidentStatus(incidentId, "Active");
+    return {};
+  },
+
+  REJECT_INCIDENT(payload) {
+    const { incidentId, reason, timestamp, note } = payload;
+    if (!REJECT_REASONS.includes(reason)) throw new Error("Unknown reject reason");
+    const finalNote = reason === "Other" ? (note || "").trim() || "Other" : reason;
+    setIncidentStatus(incidentId, "Rejected", finalNote, timestamp);
+    return {};
+  },
+
+  RECCE_INCIDENT(payload) {
+    const { incidentId } = payload;
+    setIncidentStatus(incidentId, "Active", "Reconnoitered");
+    return {};
+  },
+
+  COMPLETE_INCIDENT(payload) {
+    const { incidentId, note, timestamp } = payload;
+    setIncidentStatus(incidentId, "Complete", note || null, timestamp);
+    return {};
+  },
+
+  CANCEL_INCIDENT(payload) {
+    const { incidentId, reason, timestamp, note } = payload;
+    if (!CANCEL_REASONS.includes(reason)) throw new Error("Unknown cancel reason");
+    const finalNote = reason === "Other" ? (note || "").trim() || "Other" : reason;
+    setIncidentStatus(incidentId, "Cancelled", finalNote, timestamp);
+    return {};
+  },
+
+  REOPEN_INCIDENT(payload) {
+    const { incidentId } = payload;
+    setIncidentStatus(incidentId, "Active", "Reopened");
+    return {};
+  },
+
+  FINALISE_INCIDENT(payload) {
+    const { incidentId } = payload;
+    setIncidentStatus(incidentId, "Finalised");
     return {};
   },
 
