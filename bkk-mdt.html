@@ -1,0 +1,2300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<title>BKK-MDT</title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="BKK-MDT" />
+<link rel="apple-touch-icon" href="data:image/png;base64,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" />
+<link rel="manifest" href="data:application/manifest+json,{"name": "BKK-MDT", "short_name": "BKK-MDT", "start_url": ".", "display": "standalone", "background_color": "%2305070a", "theme_color": "%2305070a", "icons": [{"src": "data:image/png;base64,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", "sizes": "192x192", "type": "image/png"}]}" />
+<meta name="theme-color" content="#05070a" />
+<link rel="icon" href="data:image/png;base64,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" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+  html, body { margin: 0; padding: 0; background: #05070a; overscroll-behavior-y: contain; }
+  #root { min-height: 100vh; }
+  * { -webkit-tap-highlight-color: transparent; }
+  input, textarea, select { font-size: 16px; }
+  #fallback-error {
+    display: none; position: fixed; inset: 0; background: #05070a; color: #F2F5F6;
+    font-family: -apple-system, sans-serif; padding: 20px; box-sizing: border-box; z-index: 9999; overflow: auto;
+  }
+  #fallback-error.show { display: block; }
+  #fallback-error h2 { color: #D9463D; font-size: 17px; margin: 0 0 10px; }
+  #fallback-error pre {
+    background: #161B20; border: 1px solid #D9463D55; border-radius: 8px; padding: 12px;
+    font-size: 11.5px; color: #e08a84; white-space: pre-wrap; word-break: break-word;
+  }
+  #fallback-error p { color: #7C8791; font-size: 12px; }
+</style>
+</head>
+<body>
+<script>
+  window.addEventListener("error", function (e) {
+    showFallbackError((e.error && e.error.message) || e.message || "Unknown error");
+  });
+  window.addEventListener("unhandledrejection", function (e) {
+    showFallbackError((e.reason && e.reason.message) || String(e.reason) || "Unknown error");
+  });
+  function showFallbackError(msg) {
+    var el = document.getElementById("fallback-error");
+    if (!el) return;
+    document.getElementById("fallback-error-msg").textContent = msg;
+    el.classList.add("show");
+  }
+</script>
+<div id="fallback-error">
+  <h2>BKK-MDT couldn't load</h2>
+  <pre id="fallback-error-msg"></pre>
+  <p>Screenshot this and send it back — it tells us exactly what broke.</p>
+</div>
+<div id="root">
+  <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:-apple-system,sans-serif;color:#7C8791;font-size:13px;">
+    Loading BKK-MDT…
+  </div>
+</div>
+<script type="module">
+import React, { useState, useEffect, useRef } from "https://esm.sh/react@18.3.1";
+import { createRoot } from "https://esm.sh/react-dom@18.3.1/client";
+import { Truck, Navigation, Users, ClipboardList, CheckCircle2, ChevronRight, X, Plus, MapPin, Phone, RefreshCw, ArrowLeft, Star, Trash2, LayoutGrid } from "https://esm.sh/lucide-react@0.383.0?deps=react@18.3.1";
+
+// ---------------------------------------------------------------
+// CONSTANTS -- mirrors bkk_server.js exactly.
+// ---------------------------------------------------------------
+const VEHICLES = ["BKK31", "BKK32", "BKK33", "BKK36", "BKK37", "BKK44", "BKK56", "SES59", "SES43K", "BKK-FEIGE"];
+const STATUSES = [{
+  id: "standby",
+  label: "STANDBY",
+  led: "#7C8791"
+}, {
+  id: "onalert",
+  label: "ON ALERT",
+  led: "#E8B23C"
+}, {
+  id: "activated",
+  label: "ACTIVATED",
+  led: "#3FA34D"
+}, {
+  id: "rest",
+  label: "REST",
+  led: "#2F8FD1"
+}, {
+  id: "stooddown",
+  label: "STOOD DOWN",
+  led: "#D9463D"
+}];
+const PHASES = ["EN ROUTE", "ONSITE", "OFFSITE"];
+const PRIORITY_COLORS = {
+  Immediate: "#D9463D",
+  Priority: "#E8B23C",
+  General: "#2F8FD1"
+};
+const CAPABILITY_TYPES = ["FIELD-ACC", "FRL1-ACC", "FRL2-ACC", "FRL3-ACC", "FTL-ACC", "LS-ACC", "CFR-ACC", "DRL1-ACC", "DRL2-ACC", "DRL3-ACC", "RCR-ACC", "GLR2-ACC", "SWDG-ACC", "SWDH-ACC", "VR-ACC2", "LAR-ACC", "SAR1-ACC", "SAR2-ACC", "CL1-ACC", "CL2-ACC"];
+function shortId(id) {
+  return (id || "").replace(/^Incident /, "");
+}
+function pad(n) {
+  return String(n).padStart(2, "0");
+}
+function formatDT(iso) {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return "—";
+  return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+function formatTime(iso) {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return "—";
+  return `${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+
+// ---------------------------------------------------------------
+// SERVER CONNECTION -- same proven pattern as BKK-Incidents.
+// ---------------------------------------------------------------
+function useServerUrl() {
+  const [url, setUrlState] = useState(() => localStorage.getItem("bkk_server_url") || "");
+  const setUrl = u => {
+    const cleaned = u.trim().toLowerCase().replace(/\/$/, "");
+    localStorage.setItem("bkk_server_url", cleaned);
+    setUrlState(cleaned);
+  };
+  return [url, setUrl];
+}
+function useVehicleId() {
+  const [vehicle, setVehicleState] = useState(() => localStorage.getItem("bkk_mdt_vehicle") || "");
+  const setVehicle = v => {
+    localStorage.setItem("bkk_mdt_vehicle", v);
+    setVehicleState(v);
+  };
+  return [vehicle, setVehicle];
+}
+function useServerState(serverUrl) {
+  const [state, setState] = useState(null);
+  const [connected, setConnected] = useState(null);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    if (!serverUrl) return;
+    let cancelled = false;
+    const poll = async () => {
+      try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 15000);
+        const res = await fetch(`${serverUrl}/state`, {
+          headers: {
+            "ngrok-skip-browser-warning": "true"
+          },
+          signal: controller.signal
+        });
+        clearTimeout(timeout);
+        const contentType = res.headers.get("content-type") || "";
+        if (!contentType.includes("application/json")) {
+          throw new Error(`Server returned ${res.status} but not JSON (got "${contentType}") — likely an ngrok interstitial or wrong URL/port`);
+        }
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        if (cancelled) return;
+        setState(data);
+        setConnected(true);
+        setError(null);
+      } catch (e) {
+        if (!cancelled) {
+          setConnected(false);
+          setError(e.name === "AbortError" ? "Server took too long to respond (15s timeout)" : e.message);
+        }
+      }
+    };
+    poll();
+    const interval = setInterval(poll, 4000);
+    return () => {
+      cancelled = true;
+      clearInterval(interval);
+    };
+  }, [serverUrl]);
+  const dispatch = async (type, payload) => {
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 15000);
+      const res = await fetch(`${serverUrl}/action`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "true"
+        },
+        body: JSON.stringify({
+          type,
+          payload
+        }),
+        signal: controller.signal
+      });
+      clearTimeout(timeout);
+      const contentType = res.headers.get("content-type") || "";
+      if (!contentType.includes("application/json")) {
+        throw new Error(`Server returned ${res.status} but not JSON (got "${contentType}") — likely an ngrok interstitial or wrong URL/port`);
+      }
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Action failed");
+      setState(data.state);
+      setConnected(true);
+      setError(null);
+      return data.result;
+    } catch (e) {
+      const msg = e.name === "AbortError" ? "Request took too long and timed out (15s) — the server may be unreachable" : e.message;
+      setError(msg);
+      setConnected(false);
+      throw new Error(msg);
+    }
+  };
+  return {
+    state,
+    connected,
+    error,
+    dispatch
+  };
+}
+
+// ---------------------------------------------------------------
+// SHARED UI
+// ---------------------------------------------------------------
+function LED({
+  color,
+  size = 8
+}) {
+  return /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: size,
+      height: size,
+      borderRadius: "50%",
+      background: color,
+      display: "inline-block",
+      boxShadow: `0 0 6px ${color}88`,
+      flexShrink: 0
+    }
+  });
+}
+function PriorityChip({
+  priority
+}) {
+  const color = PRIORITY_COLORS[priority] || "#7C8791";
+  return /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "JetBrains Mono, monospace",
+      fontSize: 10.5,
+      fontWeight: 600,
+      color,
+      background: `${color}22`,
+      border: `1px solid ${color}55`,
+      borderRadius: 5,
+      padding: "2px 7px"
+    }
+  }, (priority || "—").toUpperCase());
+}
+function FieldLabel({
+  label,
+  optional
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "Inter, sans-serif",
+      fontSize: 12,
+      color: "#B7C0C8",
+      marginBottom: 6,
+      fontWeight: 600
+    }
+  }, label, " ", optional && /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: "#5c6771",
+      fontWeight: 400
+    }
+  }, "(optional)"));
+}
+function TextInput({
+  value,
+  onChange,
+  placeholder,
+  noAutoStuff = false
+}) {
+  return /*#__PURE__*/React.createElement("input", {
+    value: value,
+    onChange: e => onChange(e.target.value),
+    placeholder: placeholder,
+    autoCapitalize: noAutoStuff ? "off" : "sentences",
+    autoCorrect: noAutoStuff ? "off" : "on",
+    autoComplete: noAutoStuff ? "off" : "on",
+    spellCheck: !noAutoStuff,
+    style: {
+      width: "100%",
+      background: "#161B20",
+      border: "1px solid #2E373F",
+      borderRadius: 8,
+      padding: "11px 12px",
+      color: "#F2F5F6",
+      fontFamily: "Inter, sans-serif",
+      fontSize: 14,
+      outline: "none",
+      boxSizing: "border-box"
+    }
+  });
+}
+function SectionHeading({
+  children
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "Oswald, sans-serif",
+      fontSize: 15,
+      fontWeight: 600,
+      color: "#F2F5F6",
+      margin: "18px 0 10px",
+      paddingBottom: 6,
+      borderBottom: "1px solid #2E373F"
+    }
+  }, children);
+}
+function ConnectionBanner({
+  connected,
+  error
+}) {
+  if (connected === true) return null;
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "sticky",
+      top: 0,
+      zIndex: 20,
+      background: connected === false ? "#D9463D" : "#7C8791",
+      color: "#0d1114",
+      fontFamily: "Inter, sans-serif",
+      fontSize: 12,
+      fontWeight: 600,
+      padding: "8px 14px",
+      display: "flex",
+      alignItems: "center",
+      gap: 6,
+      justifyContent: "center"
+    }
+  }, connected === false ? `Can't reach server${error ? ` (${error})` : ""}` : "Connecting…");
+}
+
+// ---------------------------------------------------------------
+// CONNECT SCREEN
+// ---------------------------------------------------------------
+function ConnectScreen({
+  onConnected
+}) {
+  const [input, setInput] = useState("");
+  const [testing, setTesting] = useState(false);
+  const [error, setError] = useState(null);
+  const tryConnect = async () => {
+    const cleaned = input.trim().toLowerCase().replace(/\/$/, "");
+    if (!cleaned) return;
+    setTesting(true);
+    setError(null);
+    try {
+      if (!/^https?:\/\//i.test(cleaned)) {
+        throw new Error("URL must start with https:// (or http:// for a local address)");
+      }
+      const res = await fetch(`${cleaned}/health`, {
+        headers: {
+          "ngrok-skip-browser-warning": "true"
+        }
+      });
+      const contentType = res.headers.get("content-type") || "";
+      if (!contentType.includes("application/json")) {
+        throw new Error(`Got a response, but it wasn't from the server (content-type: "${contentType}"). Usually means ngrok's browser warning got in the way, or the URL/port is wrong.`);
+      }
+      if (!res.ok) throw new Error(`Server responded with ${res.status}`);
+      onConnected(cleaned);
+    } catch (e) {
+      if (e.message.includes("Failed to fetch") || e.message.includes("NetworkError")) {
+        setError("Couldn't connect at all — check that bkk_server.js is running and that you copied the https:// forwarding URL exactly.");
+      } else {
+        setError(e.message);
+      }
+    } finally {
+      setTesting(false);
+    }
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      minHeight: "100vh",
+      background: "#05070a",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: 24,
+      boxSizing: "border-box"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 44,
+      height: 44,
+      borderRadius: 10,
+      background: "#2F8FD122",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      marginBottom: 16
+    }
+  }, /*#__PURE__*/React.createElement(Truck, {
+    size: 22,
+    color: "#2F8FD1"
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "Oswald, sans-serif",
+      fontSize: 22,
+      fontWeight: 600,
+      color: "#F2F5F6",
+      marginBottom: 4
+    }
+  }, "BKK-MDT"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "Inter, sans-serif",
+      fontSize: 13,
+      color: "#7C8791",
+      marginBottom: 28,
+      textAlign: "center"
+    }
+  }, "Enter the server address to connect"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: "100%",
+      maxWidth: 340
+    }
+  }, /*#__PURE__*/React.createElement(FieldLabel, {
+    label: "Server URL"
+  }), /*#__PURE__*/React.createElement(TextInput, {
+    value: input,
+    onChange: setInput,
+    placeholder: "https://xxxx.ngrok-free.dev",
+    noAutoStuff: true
+  }), error && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 10,
+      fontFamily: "Inter, sans-serif",
+      fontSize: 12,
+      color: "#e08a84"
+    }
+  }, error), /*#__PURE__*/React.createElement("button", {
+    onClick: tryConnect,
+    disabled: testing || !input.trim(),
+    style: {
+      width: "100%",
+      marginTop: 16,
+      background: input.trim() ? "#2F8FD1" : "#1f2b33",
+      border: "none",
+      borderRadius: 8,
+      color: input.trim() ? "#0d1114" : "#7C8791",
+      fontFamily: "Oswald, sans-serif",
+      fontWeight: 600,
+      fontSize: 14,
+      padding: "13px 0",
+      cursor: input.trim() ? "pointer" : "not-allowed"
+    }
+  }, testing ? "Connecting…" : "Connect")));
+}
+
+// ---------------------------------------------------------------
+// VEHICLE SELECT SCREEN -- which vehicle this device represents
+// ---------------------------------------------------------------
+function VehicleSelectScreen({
+  state,
+  onSelect
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      minHeight: "100vh",
+      background: "#05070a",
+      padding: 20,
+      boxSizing: "border-box"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "Oswald, sans-serif",
+      fontSize: 20,
+      fontWeight: 600,
+      color: "#F2F5F6",
+      marginTop: 20,
+      marginBottom: 2
+    }
+  }, "Which vehicle is this?"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "Inter, sans-serif",
+      fontSize: 12.5,
+      color: "#7C8791",
+      marginBottom: 20
+    }
+  }, "This is remembered on this device — pick once."), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 8
+    }
+  }, VEHICLES.map(v => {
+    const st = state.vehicleStates[v]?.teamStatus;
+    return /*#__PURE__*/React.createElement("button", {
+      key: v,
+      onClick: () => onSelect(v),
+      style: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        background: "#161B20",
+        border: "1px solid #2E373F",
+        borderRadius: 10,
+        padding: "14px 16px",
+        cursor: "pointer",
+        width: "100%",
+        textAlign: "left"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 10
+      }
+    }, /*#__PURE__*/React.createElement(LED, {
+      color: st?.led || "#7C8791",
+      size: 9
+    }), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontFamily: "Oswald, sans-serif",
+        fontSize: 16,
+        fontWeight: 600,
+        color: "#F2F5F6"
+      }
+    }, v)), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontFamily: "JetBrains Mono, monospace",
+        fontSize: 10.5,
+        color: "#7C8791"
+      }
+    }, st?.label || "—"));
+  })));
+}
+
+// ---------------------------------------------------------------
+// DISPATCH SCREEN
+// ---------------------------------------------------------------
+function DispatchScreen({
+  vehicleId,
+  state,
+  dispatch
+}) {
+  const [callOffReason, setCallOffReason] = useState("");
+  const [showCallOff, setShowCallOff] = useState(false);
+  const [completeNote, setCompleteNote] = useState("");
+  const [showComplete, setShowComplete] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const v = state.vehicleStates[vehicleId];
+  const activeJob = v.activeJob;
+  const upNext = v.queue.filter(j => j.id !== activeJob?.id);
+  const currentPhase = activeJob ? v.progress[activeJob.id]?.phase : null;
+  const phaseIndex = PHASES.indexOf(currentPhase);
+  const act = async fn => {
+    setBusy(true);
+    try {
+      await fn();
+    } catch (e) {/* surfaced via banner */} finally {
+      setBusy(false);
+    }
+  };
+  const makeActive = jobId => act(() => dispatch("SET_ACTIVE_JOB", {
+    vehicle: vehicleId,
+    jobId
+  }));
+  const setPhase = phase => act(() => dispatch("SET_PHASE", {
+    vehicle: vehicleId,
+    jobId: activeJob.id,
+    phase
+  }));
+  const submitCallOff = () => act(async () => {
+    if (!callOffReason.trim()) return;
+    await dispatch("CALL_OFF_JOB", {
+      vehicle: vehicleId,
+      jobId: activeJob.id,
+      reason: callOffReason.trim()
+    });
+    setShowCallOff(false);
+    setCallOffReason("");
+  });
+  const submitComplete = () => act(async () => {
+    await dispatch("COMPLETE_JOB", {
+      vehicle: vehicleId,
+      jobId: activeJob.id,
+      mode: "team",
+      formData: {
+        note: completeNote.trim() || null,
+        completedAt: new Date().toISOString()
+      }
+    });
+    setShowComplete(false);
+    setCompleteNote("");
+  });
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "16px 16px 90px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "JetBrains Mono, monospace",
+      fontSize: 11,
+      color: "#7C8791",
+      marginBottom: 8,
+      letterSpacing: "0.04em"
+    }
+  }, "PRIMARY TASKING"), !activeJob ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "#161B20",
+      border: "1px dashed #2E373F",
+      borderRadius: 10,
+      padding: 24,
+      textAlign: "center",
+      fontFamily: "Inter, sans-serif",
+      fontSize: 13,
+      color: "#5c6771",
+      marginBottom: 20
+    }
+  }, "No active tasking.") : /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "#161B20",
+      border: "1px solid #E4780C55",
+      borderRadius: 10,
+      padding: 16,
+      marginBottom: 20
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 8,
+      marginBottom: 4,
+      flexWrap: "wrap"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "Oswald, sans-serif",
+      fontSize: 17,
+      fontWeight: 600,
+      color: "#F2F5F6"
+    }
+  }, activeJob.type), /*#__PURE__*/React.createElement(PriorityChip, {
+    priority: activeJob.priority
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "JetBrains Mono, monospace",
+      fontSize: 10.5,
+      color: "#5c6771",
+      marginBottom: 10
+    }
+  }, shortId(activeJob.id)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 6,
+      color: "#B7C0C8",
+      fontFamily: "Inter, sans-serif",
+      fontSize: 13.5,
+      marginBottom: 4
+    }
+  }, /*#__PURE__*/React.createElement(MapPin, {
+    size: 14,
+    color: "#E4780C"
+  }), " ", activeJob.addr), (activeJob.callersName || activeJob.callersNumber) && /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 8,
+      color: "#7C8791",
+      fontFamily: "Inter, sans-serif",
+      fontSize: 12.5,
+      marginTop: 4
+    }
+  }, activeJob.callersName || "—", activeJob.callersNumber && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Phone, {
+    size: 12,
+    style: {
+      marginLeft: 4
+    }
+  }), " ", activeJob.callersNumber)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "grid",
+      gridTemplateColumns: "repeat(4, 1fr)",
+      gap: 6,
+      marginTop: 14
+    }
+  }, PHASES.map((p, i) => {
+    const done = i < phaseIndex || i === phaseIndex;
+    const clickable = i === phaseIndex + 1 || i === 0 && phaseIndex === -1;
+    return /*#__PURE__*/React.createElement("button", {
+      key: p,
+      disabled: !clickable || busy,
+      onClick: () => setPhase(p),
+      style: {
+        background: done ? "#2F8FD122" : "#0d1114",
+        border: done ? "1px solid #2F8FD188" : "1px solid #2E373F",
+        borderRadius: 7,
+        color: done ? "#2F8FD1" : clickable ? "#B7C0C8" : "#3a444d",
+        fontFamily: "JetBrains Mono, monospace",
+        fontWeight: 700,
+        fontSize: 9.5,
+        padding: "9px 2px",
+        cursor: clickable ? "pointer" : "not-allowed",
+        opacity: clickable || done ? 1 : 0.5
+      }
+    }, p);
+  }), /*#__PURE__*/React.createElement("button", {
+    disabled: phaseIndex < PHASES.length - 1 || busy,
+    onClick: () => setShowComplete(true),
+    style: {
+      background: phaseIndex >= PHASES.length - 1 ? "#3FA34D" : "#0d1114",
+      border: phaseIndex >= PHASES.length - 1 ? "none" : "1px solid #2E373F",
+      borderRadius: 7,
+      color: phaseIndex >= PHASES.length - 1 ? "#0d1114" : "#3a444d",
+      fontFamily: "JetBrains Mono, monospace",
+      fontWeight: 700,
+      fontSize: 9.5,
+      padding: "9px 2px",
+      cursor: phaseIndex >= PHASES.length - 1 ? "pointer" : "not-allowed"
+    }
+  }, "COMPLETE")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setShowCallOff(true),
+    disabled: busy,
+    style: {
+      width: "100%",
+      marginTop: 10,
+      background: "none",
+      border: "1px solid #D9463D55",
+      borderRadius: 8,
+      color: "#D9463D",
+      fontFamily: "Inter, sans-serif",
+      fontWeight: 600,
+      fontSize: 12.5,
+      padding: "9px 0",
+      cursor: "pointer"
+    }
+  }, "Call Off"), showCallOff && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 12,
+      background: "#0d1114",
+      border: "1px solid #D9463D44",
+      borderRadius: 8,
+      padding: 12
+    }
+  }, /*#__PURE__*/React.createElement(FieldLabel, {
+    label: "Reason for Call Off"
+  }), /*#__PURE__*/React.createElement("textarea", {
+    value: callOffReason,
+    onChange: e => setCallOffReason(e.target.value),
+    rows: 2,
+    style: {
+      width: "100%",
+      background: "#161B20",
+      border: "1px solid #2E373F",
+      borderRadius: 8,
+      padding: "9px 11px",
+      color: "#F2F5F6",
+      fontFamily: "Inter, sans-serif",
+      fontSize: 13,
+      outline: "none",
+      resize: "none",
+      boxSizing: "border-box",
+      marginBottom: 10
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => setShowCallOff(false),
+    style: {
+      flex: 1,
+      background: "#161B20",
+      border: "1px solid #2E373F",
+      borderRadius: 8,
+      color: "#B7C0C8",
+      fontFamily: "Oswald, sans-serif",
+      fontWeight: 600,
+      fontSize: 12.5,
+      padding: "9px 0",
+      cursor: "pointer"
+    }
+  }, "Cancel"), /*#__PURE__*/React.createElement("button", {
+    onClick: submitCallOff,
+    disabled: !callOffReason.trim() || busy,
+    style: {
+      flex: 2,
+      background: callOffReason.trim() ? "#D9463D" : "#2a1e20",
+      border: "none",
+      borderRadius: 8,
+      color: callOffReason.trim() ? "#F2F5F6" : "#5c6771",
+      fontFamily: "Oswald, sans-serif",
+      fontWeight: 600,
+      fontSize: 12.5,
+      padding: "9px 0",
+      cursor: callOffReason.trim() ? "pointer" : "not-allowed"
+    }
+  }, "Confirm Call Off"))), showComplete && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 12,
+      background: "#0d1114",
+      border: "1px solid #3FA34D44",
+      borderRadius: 8,
+      padding: 12
+    }
+  }, /*#__PURE__*/React.createElement(FieldLabel, {
+    label: "Completion Note",
+    optional: true
+  }), /*#__PURE__*/React.createElement("textarea", {
+    value: completeNote,
+    onChange: e => setCompleteNote(e.target.value),
+    rows: 2,
+    style: {
+      width: "100%",
+      background: "#161B20",
+      border: "1px solid #2E373F",
+      borderRadius: 8,
+      padding: "9px 11px",
+      color: "#F2F5F6",
+      fontFamily: "Inter, sans-serif",
+      fontSize: 13,
+      outline: "none",
+      resize: "none",
+      boxSizing: "border-box",
+      marginBottom: 10
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => setShowComplete(false),
+    style: {
+      flex: 1,
+      background: "#161B20",
+      border: "1px solid #2E373F",
+      borderRadius: 8,
+      color: "#B7C0C8",
+      fontFamily: "Oswald, sans-serif",
+      fontWeight: 600,
+      fontSize: 12.5,
+      padding: "9px 0",
+      cursor: "pointer"
+    }
+  }, "Cancel"), /*#__PURE__*/React.createElement("button", {
+    onClick: submitComplete,
+    disabled: busy,
+    style: {
+      flex: 2,
+      background: "#3FA34D",
+      border: "none",
+      borderRadius: 8,
+      color: "#0d1114",
+      fontFamily: "Oswald, sans-serif",
+      fontWeight: 600,
+      fontSize: 12.5,
+      padding: "9px 0",
+      cursor: "pointer"
+    }
+  }, "Confirm Complete")))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "JetBrains Mono, monospace",
+      fontSize: 11,
+      color: "#7C8791",
+      marginBottom: 8,
+      letterSpacing: "0.04em"
+    }
+  }, "UP NEXT — ", upNext.length), upNext.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "Inter, sans-serif",
+      fontSize: 12.5,
+      color: "#5c6771"
+    }
+  }, "Nothing else queued.") : /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 8
+    }
+  }, upNext.map(j => /*#__PURE__*/React.createElement("button", {
+    key: j.id,
+    onClick: () => makeActive(j.id),
+    disabled: busy,
+    style: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      textAlign: "left",
+      background: "#161B20",
+      border: "1px solid #2E373F",
+      borderRadius: 8,
+      padding: "10px 12px",
+      cursor: "pointer"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      minWidth: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 6,
+      marginBottom: 2
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "Oswald, sans-serif",
+      fontSize: 13,
+      color: "#F2F5F6"
+    }
+  }, j.type), /*#__PURE__*/React.createElement(PriorityChip, {
+    priority: j.priority
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "Inter, sans-serif",
+      fontSize: 11.5,
+      color: "#7C8791",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap"
+    }
+  }, j.addr)), /*#__PURE__*/React.createElement(ChevronRight, {
+    size: 15,
+    color: "#7C8791",
+    style: {
+      flexShrink: 0
+    }
+  })))));
+}
+
+// ---------------------------------------------------------------
+// MAP SCREEN -- real navigation: Leaflet + GPS + Nominatim + OSRM.
+// Same throttled-refetch and fit-bounds-once fixes established
+// earlier in this project, so the map never resets itself while
+// panning/zooming.
+// ---------------------------------------------------------------
+function haversineKm(a, b) {
+  const R = 6371;
+  const dLat = (b.lat - a.lat) * Math.PI / 180;
+  const dLng = (b.lng - a.lng) * Math.PI / 180;
+  const s = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * Math.PI / 180) * Math.cos(b.lat * Math.PI / 180) * Math.sin(dLng / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(s), Math.sqrt(1 - s));
+}
+function ensureLeafletDarkStyles() {
+  if (document.getElementById("leaflet-dark-styles")) return;
+  const style = document.createElement("style");
+  style.id = "leaflet-dark-styles";
+  style.textContent = `
+    .leaflet-tile { filter: brightness(0.65) invert(1) contrast(0.9) hue-rotate(180deg) saturate(0.6); }
+    .leaflet-container { background: #141a1e; }
+  `;
+  document.head.appendChild(style);
+}
+function MapOverlayMessage({
+  text,
+  warn
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "absolute",
+      top: 12,
+      left: 12,
+      right: 12,
+      zIndex: 500,
+      background: warn ? "#D9463Ddd" : "#161B20dd",
+      border: `1px solid ${warn ? "#D9463D" : "#2E373F"}`,
+      borderRadius: 8,
+      padding: "8px 12px",
+      fontFamily: "Inter, sans-serif",
+      fontSize: 12,
+      color: warn ? "#fff" : "#B7C0C8",
+      textAlign: "center"
+    }
+  }, text);
+}
+function MapScreen({
+  vehicleId,
+  state
+}) {
+  const activeJob = state.vehicleStates[vehicleId].activeJob;
+  const panelRef = useRef(null);
+  const mapContainerRef = useRef(null);
+  const mapRef = useRef(null);
+  const vehicleMarkerRef = useRef(null);
+  const jobMarkerRef = useRef(null);
+  const routeLayerRef = useRef(null);
+  const lastRoutedPosRef = useRef(null);
+  const hasFitBoundsRef = useRef(false);
+  const [leafletReady, setLeafletReady] = useState(typeof window !== "undefined" && !!window.L);
+  const [myPos, setMyPos] = useState(null);
+  const [geoError, setGeoError] = useState(null);
+  const [jobPos, setJobPos] = useState(null);
+  const [geocodeError, setGeocodeError] = useState(null);
+  const [routeInfo, setRouteInfo] = useState(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) panelRef.current?.requestFullscreen?.();else document.exitFullscreen?.();
+  };
+  useEffect(() => {
+    const onChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+      setTimeout(() => mapRef.current?.invalidateSize(), 120);
+    };
+    document.addEventListener("fullscreenchange", onChange);
+    return () => document.removeEventListener("fullscreenchange", onChange);
+  }, []);
+  useEffect(() => {
+    if (window.L) {
+      setLeafletReady(true);
+      return;
+    }
+    if (!document.getElementById("leaflet-css")) {
+      const link = document.createElement("link");
+      link.id = "leaflet-css";
+      link.rel = "stylesheet";
+      link.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+      document.head.appendChild(link);
+    }
+    if (!document.getElementById("leaflet-js")) {
+      const script = document.createElement("script");
+      script.id = "leaflet-js";
+      script.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+      script.onload = () => setLeafletReady(true);
+      script.onerror = () => setGeoError("Could not load the map library");
+      document.body.appendChild(script);
+    } else {
+      const check = setInterval(() => {
+        if (window.L) {
+          setLeafletReady(true);
+          clearInterval(check);
+        }
+      }, 200);
+      return () => clearInterval(check);
+    }
+  }, []);
+  useEffect(() => {
+    if (!navigator.geolocation) {
+      setGeoError("Geolocation not supported by this browser");
+      return;
+    }
+    const watchId = navigator.geolocation.watchPosition(pos => {
+      setMyPos({
+        lat: pos.coords.latitude,
+        lng: pos.coords.longitude
+      });
+      setGeoError(null);
+    }, err => setGeoError(err.message || "Location permission denied"), {
+      enableHighAccuracy: true,
+      maximumAge: 5000,
+      timeout: 15000
+    });
+    return () => navigator.geolocation.clearWatch(watchId);
+  }, []);
+  useEffect(() => {
+    if (!activeJob) {
+      setJobPos(null);
+      return;
+    }
+    setJobPos(null);
+    setGeocodeError(null);
+    hasFitBoundsRef.current = false;
+    lastRoutedPosRef.current = null;
+    if (activeJob.lat && activeJob.long) {
+      const lat = parseFloat(activeJob.lat),
+        lng = parseFloat(activeJob.long);
+      if (!isNaN(lat) && !isNaN(lng)) {
+        setJobPos({
+          lat,
+          lng
+        });
+        return;
+      }
+    }
+    if (!activeJob.addr) return;
+    let cancelled = false;
+    fetch(`https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=au&q=${encodeURIComponent(activeJob.addr)}`).then(r => r.json()).then(data => {
+      if (cancelled) return;
+      if (data && data[0]) setJobPos({
+        lat: parseFloat(data[0].lat),
+        lng: parseFloat(data[0].lon)
+      });else setGeocodeError("Could not locate this address on the map");
+    }).catch(() => {
+      if (!cancelled) setGeocodeError("Could not reach the geocoding service");
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [activeJob?.id, activeJob?.addr, activeJob?.lat, activeJob?.long]);
+  useEffect(() => {
+    if (!leafletReady || !mapContainerRef.current || mapRef.current) return;
+    ensureLeafletDarkStyles();
+    const L = window.L;
+    const map = L.map(mapContainerRef.current).setView([-33.917, 151.03], 12);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(map);
+    mapRef.current = map;
+    return () => {
+      map.remove();
+      mapRef.current = null;
+      vehicleMarkerRef.current = null;
+      jobMarkerRef.current = null;
+      routeLayerRef.current = null;
+    };
+  }, [leafletReady]);
+  useEffect(() => {
+    if (!mapRef.current || !myPos) return;
+    const L = window.L;
+    if (!vehicleMarkerRef.current) {
+      const icon = L.divIcon({
+        className: "",
+        html: `<div style="width:16px;height:16px;border-radius:50%;background:#2F8FD1;border:3px solid #0d1114;box-shadow:0 0 0 4px #2F8FD155;"></div>`,
+        iconSize: [16, 16],
+        iconAnchor: [8, 8]
+      });
+      vehicleMarkerRef.current = L.marker([myPos.lat, myPos.lng], {
+        icon
+      }).addTo(mapRef.current).bindPopup("This vehicle");
+      mapRef.current.setView([myPos.lat, myPos.lng], 14);
+    } else {
+      vehicleMarkerRef.current.setLatLng([myPos.lat, myPos.lng]);
+    }
+  }, [myPos]);
+  useEffect(() => {
+    if (!mapRef.current || !jobPos) return;
+    const L = window.L;
+    if (jobMarkerRef.current) mapRef.current.removeLayer(jobMarkerRef.current);
+    const icon = L.divIcon({
+      className: "",
+      html: `<div style="width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:16px solid #E4780C;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.5));"></div>`,
+      iconSize: [18, 16],
+      iconAnchor: [9, 16]
+    });
+    jobMarkerRef.current = L.marker([jobPos.lat, jobPos.lng], {
+      icon
+    }).addTo(mapRef.current).bindPopup(activeJob?.addr || "");
+  }, [jobPos]);
+  useEffect(() => {
+    if (!mapRef.current || !myPos || !jobPos) return;
+    const last = lastRoutedPosRef.current;
+    if (last && haversineKm(last, myPos) < 0.1) return;
+    lastRoutedPosRef.current = myPos;
+    const L = window.L;
+    let cancelled = false;
+    fetch(`https://router.project-osrm.org/route/v1/driving/${myPos.lng},${myPos.lat};${jobPos.lng},${jobPos.lat}?overview=full&geometries=geojson`).then(r => r.json()).then(data => {
+      if (cancelled || !mapRef.current) return;
+      if (data.routes && data.routes[0]) {
+        const coords = data.routes[0].geometry.coordinates.map(([lng, lat]) => [lat, lng]);
+        if (routeLayerRef.current) mapRef.current.removeLayer(routeLayerRef.current);
+        routeLayerRef.current = L.polyline(coords, {
+          color: "#E4780C",
+          weight: 4,
+          opacity: 0.85
+        }).addTo(mapRef.current);
+        if (!hasFitBoundsRef.current) {
+          mapRef.current.fitBounds(routeLayerRef.current.getBounds(), {
+            padding: [40, 40]
+          });
+          hasFitBoundsRef.current = true;
+        }
+        setRouteInfo({
+          distanceKm: (data.routes[0].distance / 1000).toFixed(1),
+          durationMin: Math.round(data.routes[0].duration / 60)
+        });
+      } else {
+        throw new Error("no route");
+      }
+    }).catch(() => {
+      if (cancelled || !mapRef.current) return;
+      if (routeLayerRef.current) mapRef.current.removeLayer(routeLayerRef.current);
+      routeLayerRef.current = L.polyline([[myPos.lat, myPos.lng], [jobPos.lat, jobPos.lng]], {
+        color: "#E4780C",
+        weight: 3,
+        dashArray: "4 8"
+      }).addTo(mapRef.current);
+      if (!hasFitBoundsRef.current) {
+        mapRef.current.fitBounds(routeLayerRef.current.getBounds(), {
+          padding: [40, 40]
+        });
+        hasFitBoundsRef.current = true;
+      }
+      setRouteInfo({
+        distanceKm: haversineKm(myPos, jobPos).toFixed(1),
+        durationMin: null
+      });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [myPos, jobPos]);
+  if (!activeJob) {
+    return /*#__PURE__*/React.createElement("div", {
+      style: {
+        padding: 16,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "60vh"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: "Inter, sans-serif",
+        fontSize: 13,
+        color: "#5c6771",
+        textAlign: "center"
+      }
+    }, "No active tasking to navigate to.", /*#__PURE__*/React.createElement("br", null), "Set one as primary on the Dispatch tab."));
+  }
+  return /*#__PURE__*/React.createElement("div", {
+    ref: panelRef,
+    style: {
+      height: "calc(100vh - 130px)",
+      background: isFullscreen ? "#0d1114" : "transparent",
+      display: "flex",
+      flexDirection: "column"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "14px 18px",
+      borderBottom: "1px solid #2E373F",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      minWidth: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "JetBrains Mono, monospace",
+      fontSize: 12,
+      color: "#7C8791"
+    }
+  }, "NAV TO"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "Oswald, sans-serif",
+      fontSize: 16,
+      color: "#F2F5F6",
+      fontWeight: 600,
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap"
+    }
+  }, activeJob.addr)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 12,
+      flexShrink: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: "right"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "JetBrains Mono, monospace",
+      fontSize: 20,
+      color: "#3FA34D",
+      fontWeight: 600
+    }
+  }, routeInfo?.durationMin != null ? `${routeInfo.durationMin} min` : "—"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "Inter, sans-serif",
+      fontSize: 10.5,
+      color: "#7C8791"
+    }
+  }, routeInfo ? `${routeInfo.distanceKm} km${routeInfo.durationMin == null ? " (line)" : ""}` : "calculating…")), /*#__PURE__*/React.createElement("button", {
+    onClick: toggleFullscreen,
+    style: {
+      background: "#161B20",
+      border: "1px solid #2E373F",
+      borderRadius: 7,
+      width: 32,
+      height: 32,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      cursor: "pointer",
+      color: "#B7C0C8",
+      flexShrink: 0
+    }
+  }, isFullscreen ? /*#__PURE__*/React.createElement(X, {
+    size: 15
+  }) : /*#__PURE__*/React.createElement(LayoutGrid, {
+    size: 14
+  })))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      position: "relative",
+      background: "#141a1e"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    ref: mapContainerRef,
+    style: {
+      width: "100%",
+      height: "100%"
+    }
+  }), !leafletReady && /*#__PURE__*/React.createElement(MapOverlayMessage, {
+    text: "Loading map…"
+  }), geoError && /*#__PURE__*/React.createElement(MapOverlayMessage, {
+    warn: true,
+    text: `Location unavailable (${geoError}). Allow location access.`
+  }), !geoError && !myPos && leafletReady && /*#__PURE__*/React.createElement(MapOverlayMessage, {
+    text: "Waiting for GPS fix…"
+  }), geocodeError && /*#__PURE__*/React.createElement(MapOverlayMessage, {
+    warn: true,
+    text: geocodeError
+  })));
+}
+
+// ---------------------------------------------------------------
+// TEAM SCREEN
+// ---------------------------------------------------------------
+function TeamScreen({
+  vehicleId,
+  state,
+  dispatch
+}) {
+  const [addOpen, setAddOpen] = useState(false);
+  const [createOpen, setCreateOpen] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [number400, setNumber400] = useState("");
+  const [capabilities, setCapabilities] = useState(new Set());
+  const [busy, setBusy] = useState(false);
+  const v = state.vehicleStates[vehicleId];
+  const availableMembers = state.ssMembers.filter(m => !v.crew.some(c => c.id === m.id));
+  const act = async fn => {
+    setBusy(true);
+    try {
+      await fn();
+    } catch (e) {/* surfaced via banner */} finally {
+      setBusy(false);
+    }
+  };
+  const setStatus = statusId => act(() => dispatch("SET_TEAM_STATUS", {
+    vehicle: vehicleId,
+    statusId
+  }));
+  const addExisting = ssMemberId => act(async () => {
+    await dispatch("ADD_CREW_MEMBER", {
+      vehicle: vehicleId,
+      ssMemberId
+    });
+    setAddOpen(false);
+  });
+  const removeMember = memberId => act(() => dispatch("REMOVE_CREW_MEMBER", {
+    vehicle: vehicleId,
+    memberId
+  }));
+  const setLeader = memberId => act(() => dispatch("SET_LEADER", {
+    vehicle: vehicleId,
+    memberId
+  }));
+  const toggleCap = c => setCapabilities(prev => {
+    const n = new Set(prev);
+    n.has(c) ? n.delete(c) : n.add(c);
+    return n;
+  });
+  const submitCreate = () => act(async () => {
+    if (!firstName.trim() || !lastName.trim()) return;
+    const result = await dispatch("CREATE_SES_MEMBER", {
+      firstName: firstName.trim(),
+      lastName: lastName.trim(),
+      number400: number400.trim() || null,
+      hq: "Bankstown",
+      capabilities: [...capabilities]
+    });
+    await dispatch("ADD_CREW_MEMBER", {
+      vehicle: vehicleId,
+      ssMemberId: result.member.id
+    });
+    setFirstName("");
+    setLastName("");
+    setNumber400("");
+    setCapabilities(new Set());
+    setCreateOpen(false);
+    setAddOpen(false);
+  });
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "16px 16px 90px"
+    }
+  }, /*#__PURE__*/React.createElement(SectionHeading, null, "Team Status"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "grid",
+      gridTemplateColumns: "repeat(3, 1fr)",
+      gap: 6,
+      marginBottom: 8
+    }
+  }, STATUSES.map(s => {
+    const active = v.teamStatus.id === s.id;
+    return /*#__PURE__*/React.createElement("button", {
+      key: s.id,
+      onClick: () => setStatus(s.id),
+      disabled: busy,
+      style: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 5,
+        background: active ? `${s.led}22` : "#161B20",
+        border: active ? `1px solid ${s.led}88` : "1px solid #2E373F",
+        borderRadius: 7,
+        color: active ? s.led : "#B7C0C8",
+        fontFamily: "JetBrains Mono, monospace",
+        fontWeight: 700,
+        fontSize: 10,
+        padding: "10px 2px",
+        cursor: "pointer"
+      }
+    }, /*#__PURE__*/React.createElement(LED, {
+      color: s.led,
+      size: 7
+    }), " ", s.label);
+  })), /*#__PURE__*/React.createElement(SectionHeading, null, "Crew — ", v.crew.length), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 8,
+      marginBottom: 10
+    }
+  }, v.crew.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "Inter, sans-serif",
+      fontSize: 12.5,
+      color: "#5c6771"
+    }
+  }, "No crew on board yet.") : v.crew.map(c => /*#__PURE__*/React.createElement("div", {
+    key: c.id,
+    style: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      background: "#161B20",
+      border: "1px solid #2E373F",
+      borderRadius: 8,
+      padding: "10px 12px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      minWidth: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 6
+    }
+  }, v.leaderId === c.id && /*#__PURE__*/React.createElement(Star, {
+    size: 12,
+    color: "#E8B23C",
+    fill: "#E8B23C"
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "Oswald, sans-serif",
+      fontSize: 13.5,
+      fontWeight: 600,
+      color: "#F2F5F6"
+    }
+  }, c.first, " ", c.last)), c.capabilities?.length > 0 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "JetBrains Mono, monospace",
+      fontSize: 9.5,
+      color: "#7C8791",
+      marginTop: 2
+    }
+  }, c.capabilities.join(", "))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      flexShrink: 0
+    }
+  }, v.leaderId !== c.id && /*#__PURE__*/React.createElement("button", {
+    onClick: () => setLeader(c.id),
+    disabled: busy,
+    title: "Set as leader",
+    style: {
+      background: "none",
+      border: "1px solid #2E373F",
+      borderRadius: 6,
+      width: 28,
+      height: 28,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      cursor: "pointer",
+      color: "#7C8791"
+    }
+  }, /*#__PURE__*/React.createElement(Star, {
+    size: 13
+  })), /*#__PURE__*/React.createElement("button", {
+    onClick: () => removeMember(c.id),
+    disabled: busy,
+    title: "Remove",
+    style: {
+      background: "none",
+      border: "1px solid #D9463D44",
+      borderRadius: 6,
+      width: 28,
+      height: 28,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      cursor: "pointer",
+      color: "#D9463D"
+    }
+  }, /*#__PURE__*/React.createElement(Trash2, {
+    size: 13
+  })))))), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setAddOpen(o => !o),
+    style: {
+      width: "100%",
+      background: "#161B20",
+      border: "1px solid #2F8FD188",
+      borderRadius: 8,
+      color: "#2F8FD1",
+      fontFamily: "Oswald, sans-serif",
+      fontWeight: 600,
+      fontSize: 13,
+      padding: "11px 0",
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 6
+    }
+  }, /*#__PURE__*/React.createElement(Plus, {
+    size: 14
+  }), " Add Team Member"), addOpen && !createOpen && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 10,
+      background: "#161B20",
+      border: "1px solid #2E373F",
+      borderRadius: 8,
+      padding: 10
+    }
+  }, availableMembers.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "Inter, sans-serif",
+      fontSize: 12,
+      color: "#5c6771",
+      marginBottom: 10
+    }
+  }, "No other SES members available yet.") : /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 6,
+      marginBottom: 10
+    }
+  }, availableMembers.map(m => /*#__PURE__*/React.createElement("button", {
+    key: m.id,
+    onClick: () => addExisting(m.id),
+    disabled: busy,
+    style: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      background: "#0d1114",
+      border: "1px solid #2E373F",
+      borderRadius: 7,
+      padding: "8px 10px",
+      cursor: "pointer",
+      textAlign: "left"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "Inter, sans-serif",
+      fontSize: 12.5,
+      color: "#F2F5F6"
+    }
+  }, m.firstName, " ", m.lastName), /*#__PURE__*/React.createElement(Plus, {
+    size: 13,
+    color: "#2F8FD1"
+  })))), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setCreateOpen(true),
+    style: {
+      width: "100%",
+      background: "none",
+      border: "1px dashed #2E373F",
+      borderRadius: 7,
+      color: "#7C8791",
+      fontFamily: "Inter, sans-serif",
+      fontWeight: 600,
+      fontSize: 12,
+      padding: "9px 0",
+      cursor: "pointer"
+    }
+  }, "+ New SES Member")), createOpen && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 10,
+      background: "#161B20",
+      border: "1px solid #2F8FD144",
+      borderRadius: 8,
+      padding: 12
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 8,
+      marginBottom: 10
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement(FieldLabel, {
+    label: "First Name"
+  }), /*#__PURE__*/React.createElement(TextInput, {
+    value: firstName,
+    onChange: setFirstName,
+    placeholder: "First"
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement(FieldLabel, {
+    label: "Last Name"
+  }), /*#__PURE__*/React.createElement(TextInput, {
+    value: lastName,
+    onChange: setLastName,
+    placeholder: "Last"
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 10
+    }
+  }, /*#__PURE__*/React.createElement(FieldLabel, {
+    label: "400 Number",
+    optional: true
+  }), /*#__PURE__*/React.createElement(TextInput, {
+    value: number400,
+    onChange: setNumber400,
+    placeholder: "e.g. 40012345"
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 12
+    }
+  }, /*#__PURE__*/React.createElement(FieldLabel, {
+    label: "Capabilities",
+    optional: true
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexWrap: "wrap",
+      gap: 5
+    }
+  }, CAPABILITY_TYPES.map(c => {
+    const active = capabilities.has(c);
+    return /*#__PURE__*/React.createElement("button", {
+      key: c,
+      onClick: () => toggleCap(c),
+      style: {
+        background: active ? "#2F8FD122" : "#0d1114",
+        border: active ? "1px solid #2F8FD188" : "1px solid #2E373F",
+        borderRadius: 999,
+        color: active ? "#2F8FD1" : "#7C8791",
+        fontFamily: "JetBrains Mono, monospace",
+        fontSize: 10,
+        padding: "4px 8px",
+        cursor: "pointer"
+      }
+    }, c);
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => setCreateOpen(false),
+    style: {
+      flex: 1,
+      background: "#0d1114",
+      border: "1px solid #2E373F",
+      borderRadius: 8,
+      color: "#B7C0C8",
+      fontFamily: "Oswald, sans-serif",
+      fontWeight: 600,
+      fontSize: 12.5,
+      padding: "10px 0",
+      cursor: "pointer"
+    }
+  }, "Cancel"), /*#__PURE__*/React.createElement("button", {
+    onClick: submitCreate,
+    disabled: !firstName.trim() || !lastName.trim() || busy,
+    style: {
+      flex: 2,
+      background: firstName.trim() && lastName.trim() ? "#2F8FD1" : "#1f2b33",
+      border: "none",
+      borderRadius: 8,
+      color: firstName.trim() && lastName.trim() ? "#0d1114" : "#5c6771",
+      fontFamily: "Oswald, sans-serif",
+      fontWeight: 600,
+      fontSize: 12.5,
+      padding: "10px 0",
+      cursor: firstName.trim() && lastName.trim() ? "pointer" : "not-allowed"
+    }
+  }, "Create & Add"))), /*#__PURE__*/React.createElement(SectionHeading, null, "Timeline"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 6
+    }
+  }, v.timeline.map(e => /*#__PURE__*/React.createElement("div", {
+    key: e.id,
+    style: {
+      display: "flex",
+      justifyContent: "space-between",
+      gap: 8,
+      background: "#161B20",
+      border: "1px solid #2E373F",
+      borderRadius: 7,
+      padding: "7px 10px"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "Inter, sans-serif",
+      fontSize: 12,
+      color: "#B7C0C8"
+    }
+  }, e.main), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "JetBrains Mono, monospace",
+      fontSize: 10,
+      color: "#5c6771",
+      flexShrink: 0
+    }
+  }, formatTime(e.time))))));
+}
+
+// ---------------------------------------------------------------
+// COMPLETED SCREEN
+// ---------------------------------------------------------------
+function CompletedScreen({
+  vehicleId,
+  state
+}) {
+  const [openId, setOpenId] = useState(null);
+  const completed = state.completedJobs.filter(c => c.vehicle === vehicleId);
+  const calledOff = state.calledOffJobs.filter(c => c.vehicle === vehicleId);
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "16px 16px 90px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "JetBrains Mono, monospace",
+      fontSize: 11,
+      color: "#7C8791",
+      marginBottom: 8,
+      letterSpacing: "0.04em"
+    }
+  }, "COMPLETED — ", completed.length), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 8,
+      marginBottom: 20
+    }
+  }, completed.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "Inter, sans-serif",
+      fontSize: 12.5,
+      color: "#5c6771"
+    }
+  }, "Nothing completed yet.") : completed.map((c, i) => {
+    const key = `c-${i}`;
+    const open = openId === key;
+    return /*#__PURE__*/React.createElement("div", {
+      key: key,
+      style: {
+        background: "#161B20",
+        border: "1px solid #3FA34D44",
+        borderRadius: 8,
+        overflow: "hidden"
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: () => setOpenId(open ? null : key),
+      style: {
+        width: "100%",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        background: "none",
+        border: "none",
+        padding: "10px 12px",
+        cursor: "pointer",
+        textAlign: "left"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        minWidth: 0
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 6,
+        marginBottom: 2
+      }
+    }, /*#__PURE__*/React.createElement(CheckCircle2, {
+      size: 13,
+      color: "#3FA34D"
+    }), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontFamily: "Oswald, sans-serif",
+        fontSize: 13,
+        color: "#F2F5F6"
+      }
+    }, c.job.type)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: "Inter, sans-serif",
+        fontSize: 11,
+        color: "#7C8791"
+      }
+    }, c.job.addr)), /*#__PURE__*/React.createElement(ChevronRight, {
+      size: 14,
+      color: "#7C8791",
+      style: {
+        flexShrink: 0,
+        transform: open ? "rotate(90deg)" : "none"
+      }
+    })), open && /*#__PURE__*/React.createElement("div", {
+      style: {
+        padding: "0 12px 12px",
+        fontFamily: "Inter, sans-serif",
+        fontSize: 12,
+        color: "#B7C0C8"
+      }
+    }, c.formData?.note && /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginBottom: 6
+      }
+    }, c.formData.note), c.onBoard?.length > 0 && /*#__PURE__*/React.createElement("div", {
+      style: {
+        color: "#7C8791"
+      }
+    }, "On board: ", c.onBoard.join(", "))));
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "JetBrains Mono, monospace",
+      fontSize: 11,
+      color: "#7C8791",
+      marginBottom: 8,
+      letterSpacing: "0.04em"
+    }
+  }, "CALLED OFF — ", calledOff.length), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 8
+    }
+  }, calledOff.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "Inter, sans-serif",
+      fontSize: 12.5,
+      color: "#5c6771"
+    }
+  }, "None.") : calledOff.map((c, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    style: {
+      background: "#161B20",
+      border: "1px solid #D9463D44",
+      borderRadius: 8,
+      padding: "10px 12px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 6,
+      marginBottom: 2
+    }
+  }, /*#__PURE__*/React.createElement(X, {
+    size: 13,
+    color: "#D9463D"
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "Oswald, sans-serif",
+      fontSize: 13,
+      color: "#F2F5F6"
+    }
+  }, c.job.type)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "Inter, sans-serif",
+      fontSize: 11,
+      color: "#7C8791"
+    }
+  }, c.reason)))));
+}
+
+// ---------------------------------------------------------------
+// HEADER + BOTTOM NAV
+// ---------------------------------------------------------------
+function useClock() {
+  const [now, setNow] = useState(new Date());
+  useEffect(() => {
+    const t = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(t);
+  }, []);
+  return now;
+}
+function Header({
+  vehicleId,
+  state,
+  onChangeVehicle
+}) {
+  const now = useClock();
+  const st = state.vehicleStates[vehicleId].teamStatus;
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      padding: "10px 14px",
+      borderBottom: "1px solid #1c2228",
+      background: "#0d1114"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement(LED, {
+    color: st.led,
+    size: 9
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "Oswald, sans-serif",
+      fontSize: 15,
+      fontWeight: 700,
+      color: "#F2F5F6"
+    }
+  }, vehicleId), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "JetBrains Mono, monospace",
+      fontSize: 9,
+      color: "#7C8791"
+    }
+  }, st.label))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 10
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "JetBrains Mono, monospace",
+      fontSize: 13,
+      color: "#B7C0C8"
+    }
+  }, formatTime(now.toISOString())), /*#__PURE__*/React.createElement("button", {
+    onClick: onChangeVehicle,
+    style: {
+      background: "none",
+      border: "1px solid #2E373F",
+      borderRadius: 6,
+      color: "#7C8791",
+      fontFamily: "Inter, sans-serif",
+      fontSize: 10,
+      fontWeight: 600,
+      padding: "4px 8px",
+      cursor: "pointer"
+    }
+  }, "Switch")));
+}
+function BottomNav({
+  tab,
+  setTab,
+  incomingCount
+}) {
+  const tabs = [{
+    id: "dispatch",
+    label: "Dispatch",
+    icon: ClipboardList,
+    badge: incomingCount
+  }, {
+    id: "map",
+    label: "Map",
+    icon: Navigation
+  }, {
+    id: "team",
+    label: "Team",
+    icon: Users
+  }, {
+    id: "completed",
+    label: "Completed",
+    icon: CheckCircle2
+  }];
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "fixed",
+      bottom: 0,
+      left: 0,
+      right: 0,
+      background: "#0d1114",
+      borderTop: "1px solid #2E373F",
+      display: "flex",
+      zIndex: 30,
+      paddingBottom: "env(safe-area-inset-bottom, 0px)"
+    }
+  }, tabs.map(t => {
+    const active = tab === t.id;
+    const Icon = t.icon;
+    return /*#__PURE__*/React.createElement("button", {
+      key: t.id,
+      onClick: () => setTab(t.id),
+      style: {
+        flex: 1,
+        background: "none",
+        border: "none",
+        padding: "10px 0 8px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 3,
+        cursor: "pointer",
+        position: "relative"
+      }
+    }, /*#__PURE__*/React.createElement(Icon, {
+      size: 19,
+      color: active ? "#2F8FD1" : "#7C8791"
+    }), t.badge > 0 && /*#__PURE__*/React.createElement("span", {
+      style: {
+        position: "absolute",
+        top: 4,
+        right: "28%",
+        background: "#E8B23C",
+        color: "#0d1114",
+        fontSize: 9,
+        fontWeight: 700,
+        borderRadius: 999,
+        minWidth: 15,
+        height: 15,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "0 3px"
+      }
+    }, t.badge), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontFamily: "Inter, sans-serif",
+        fontSize: 10.5,
+        fontWeight: 600,
+        color: active ? "#2F8FD1" : "#7C8791"
+      }
+    }, t.label));
+  }));
+}
+
+// ---------------------------------------------------------------
+// APP
+// ---------------------------------------------------------------
+// ---------------------------------------------------------------
+// INCOMING TASKING OVERLAY -- fullscreen, sits above whatever tab is
+// open, so a new tasking is impossible to miss regardless of what the
+// crew is doing on the device at the time.
+// ---------------------------------------------------------------
+function IncomingTaskingOverlay({
+  vehicleId,
+  job,
+  dispatch
+}) {
+  const [busy, setBusy] = useState(false);
+  const acknowledge = async () => {
+    if (busy) return;
+    setBusy(true);
+    try {
+      await dispatch("ACKNOWLEDGE_INCOMING", {
+        vehicle: vehicleId
+      });
+    } catch (e) {/* surfaced via banner underneath */} finally {
+      setBusy(false);
+    }
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    onClick: acknowledge,
+    style: {
+      position: "fixed",
+      inset: 0,
+      zIndex: 1000,
+      background: "#1a1408",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: 28,
+      boxSizing: "border-box",
+      cursor: "pointer",
+      textAlign: "center"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "JetBrains Mono, monospace",
+      fontSize: 15,
+      color: "#E8B23C",
+      fontWeight: 700,
+      letterSpacing: "0.12em",
+      marginBottom: 28
+    }
+  }, "INCOMING TASKING"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 18
+    }
+  }, /*#__PURE__*/React.createElement(PriorityChip, {
+    priority: job.priority
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "Oswald, sans-serif",
+      fontSize: 32,
+      fontWeight: 700,
+      color: "#F2F5F6",
+      lineHeight: 1.2,
+      marginBottom: 20,
+      maxWidth: 480
+    }
+  }, job.type), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 8,
+      color: "#B7C0C8",
+      fontFamily: "Inter, sans-serif",
+      fontSize: 19,
+      marginBottom: 56,
+      maxWidth: 480
+    }
+  }, /*#__PURE__*/React.createElement(MapPin, {
+    size: 20,
+    color: "#E4780C",
+    style: {
+      flexShrink: 0
+    }
+  }), " ", job.addr), /*#__PURE__*/React.createElement("div", {
+    style: {
+      border: "3px solid #E8B23C",
+      borderRadius: 999,
+      padding: "20px 56px",
+      fontFamily: "Oswald, sans-serif",
+      fontWeight: 700,
+      fontSize: 20,
+      color: "#E8B23C",
+      letterSpacing: "0.04em"
+    }
+  }, busy ? "ACKNOWLEDGING…" : "TAP TO ACKNOWLEDGE"));
+}
+function App() {
+  const [serverUrl, setServerUrl] = useServerUrl();
+  const [vehicleId, setVehicleId] = useVehicleId();
+  const {
+    state,
+    connected,
+    error,
+    dispatch
+  } = useServerState(serverUrl);
+  const [tab, setTab] = useState("dispatch");
+
+  // Vibrate when a genuinely new tasking arrives (not just whenever the
+  // overlay happens to be showing) -- computed safely before state/vehicle
+  // are ready, since hooks can't sit after an early return.
+  const prevIncomingCountRef = useRef(0);
+  const incomingCountSafe = state && vehicleId && VEHICLES.includes(vehicleId) ? state.vehicleStates[vehicleId]?.incomingQueue.length || 0 : 0;
+  useEffect(() => {
+    if (incomingCountSafe > prevIncomingCountRef.current && navigator.vibrate) {
+      navigator.vibrate([200, 100, 200, 100, 200]);
+    }
+    prevIncomingCountRef.current = incomingCountSafe;
+  }, [incomingCountSafe]);
+  if (!serverUrl) return /*#__PURE__*/React.createElement(ConnectScreen, {
+    onConnected: setServerUrl
+  });
+  if (!state) {
+    return /*#__PURE__*/React.createElement("div", {
+      style: {
+        minHeight: "100vh",
+        background: "#05070a",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: "Inter, sans-serif",
+        fontSize: 13,
+        color: "#7C8791"
+      }
+    }, connected === false ? `Can't reach the server (${error})` : "Loading…"));
+  }
+  if (!vehicleId || !VEHICLES.includes(vehicleId)) {
+    return /*#__PURE__*/React.createElement(VehicleSelectScreen, {
+      state: state,
+      onSelect: setVehicleId
+    });
+  }
+  const incomingCount = state.vehicleStates[vehicleId].incomingQueue.length;
+  const incomingJob = state.vehicleStates[vehicleId].incomingQueue[0];
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      minHeight: "100vh",
+      background: "#05070a",
+      fontFamily: "Inter, sans-serif"
+    }
+  }, /*#__PURE__*/React.createElement(ConnectionBanner, {
+    connected: connected,
+    error: error
+  }), /*#__PURE__*/React.createElement(Header, {
+    vehicleId: vehicleId,
+    state: state,
+    onChangeVehicle: () => setVehicleId("")
+  }), tab === "dispatch" && /*#__PURE__*/React.createElement(DispatchScreen, {
+    vehicleId: vehicleId,
+    state: state,
+    dispatch: dispatch
+  }), tab === "map" && /*#__PURE__*/React.createElement(MapScreen, {
+    vehicleId: vehicleId,
+    state: state
+  }), tab === "team" && /*#__PURE__*/React.createElement(TeamScreen, {
+    vehicleId: vehicleId,
+    state: state,
+    dispatch: dispatch
+  }), tab === "completed" && /*#__PURE__*/React.createElement(CompletedScreen, {
+    vehicleId: vehicleId,
+    state: state
+  }), /*#__PURE__*/React.createElement(BottomNav, {
+    tab: tab,
+    setTab: setTab,
+    incomingCount: incomingCount
+  }), incomingJob && /*#__PURE__*/React.createElement(IncomingTaskingOverlay, {
+    vehicleId: vehicleId,
+    job: incomingJob,
+    dispatch: dispatch
+  }));
+}
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null
+    };
+  }
+  static getDerivedStateFromError(error) {
+    return {
+      error
+    };
+  }
+  render() {
+    if (this.state.error) {
+      return /*#__PURE__*/React.createElement("div", {
+        style: {
+          minHeight: "100vh",
+          background: "#05070a",
+          padding: 20,
+          boxSizing: "border-box",
+          fontFamily: "Inter, sans-serif",
+          color: "#F2F5F6"
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontFamily: "Oswald, sans-serif",
+          fontSize: 18,
+          fontWeight: 600,
+          color: "#D9463D",
+          marginBottom: 10
+        }
+      }, "Something went wrong"), /*#__PURE__*/React.createElement("div", {
+        style: {
+          background: "#161B20",
+          border: "1px solid #D9463D55",
+          borderRadius: 8,
+          padding: 12,
+          fontFamily: "JetBrains Mono, monospace",
+          fontSize: 11.5,
+          color: "#e08a84",
+          whiteSpace: "pre-wrap",
+          wordBreak: "break-word"
+        }
+      }, String(this.state.error && this.state.error.message || this.state.error)), /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontFamily: "Inter, sans-serif",
+          fontSize: 12,
+          color: "#7C8791",
+          marginTop: 14
+        }
+      }, "Screenshot this and send it back — it tells us exactly what broke."));
+    }
+    return this.props.children;
+  }
+}
+const rootEl = document.getElementById("root");
+createRoot(rootEl).render(/*#__PURE__*/React.createElement(ErrorBoundary, null, /*#__PURE__*/React.createElement(App, null)));
+</script>
+</body>
+</html>
