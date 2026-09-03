@@ -31,7 +31,7 @@ const DATA_FILE = path.join(__dirname, "bkk_data.json");
 // CONSTANTS -- mirrors the values already used in the prototype, so
 // the eventual apps' code and this server agree on the same shapes.
 // ---------------------------------------------------------------
-const VEHICLES = ["BKK1", "BKK31", "BKK32", "BKK33", "BKK36", "BKK37", "BKK44", "BKK56", "SES59", "SES43K"];
+const VEHICLES = ["BKK31", "BKK32", "BKK33", "BKK36", "BKK37", "BKK44", "BKK56", "SES59", "SES43K", "BKK-FEIGE"];
 
 const STATUSES = [
   { id: "standby", label: "STANDBY", led: "#7C8791" },
@@ -262,7 +262,11 @@ const actions = {
       // Task button), not something that happens silently on create.
       addToPool(incident);
     }
-    return { incident };
+    // notifyVehicle() updates state.allIncidents with a fresh object
+    // (status: "Tasked" etc) rather than mutating `incident` in place --
+    // look the real final version up so callers get accurate data back
+    // immediately, instead of a stale "New" status.
+    return { incident: state.allIncidents.find((i) => i.id === incident.id) };
   },
 
   NOTIFY_VEHICLE(payload) {
