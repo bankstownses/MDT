@@ -1,0 +1,9 @@
+{
+  "name": "mdt",
+  "version": "1.0.0",
+  "description": "BKK shared server for the SES MDT prototype",
+  "main": "bkk_server.js",
+  "scripts": {
+    "start": "node bkk_server.js"
+  }
+}
