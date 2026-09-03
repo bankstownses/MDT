@@ -274,8 +274,9 @@ const actions = {
   },
 
   ACKNOWLEDGE_INCIDENT(payload) {
-    const { incidentId } = payload;
-    setIncidentStatus(incidentId, "Active");
+    const { incidentId, availableForRescue } = payload;
+    updateIncidentEverywhere(incidentId, (i) => ({ ...i, availableForRescue: availableForRescue ?? i.availableForRescue ?? null }));
+    setIncidentStatus(incidentId, "Active", availableForRescue != null ? `Available for Rescue: ${availableForRescue ? "Yes" : "No"}` : null);
     return {};
   },
 
@@ -289,6 +290,7 @@ const actions = {
 
   RECCE_INCIDENT(payload) {
     const { incidentId } = payload;
+    updateIncidentEverywhere(incidentId, (i) => ({ ...i, reconnoitered: true }));
     setIncidentStatus(incidentId, "Active", "Reconnoitered");
     return {};
   },
@@ -314,8 +316,8 @@ const actions = {
   },
 
   FINALISE_INCIDENT(payload) {
-    const { incidentId } = payload;
-    setIncidentStatus(incidentId, "Finalised");
+    const { incidentId, note, timestamp } = payload;
+    setIncidentStatus(incidentId, "Finalised", note || null, timestamp);
     return {};
   },
 
